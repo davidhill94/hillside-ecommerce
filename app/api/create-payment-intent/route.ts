@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'; // Forces render on request & NOT BUILD
+
 import { CartProductType } from "@/app/product/[productId]/productDetails";
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
