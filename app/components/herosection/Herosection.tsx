@@ -11,7 +11,7 @@ const HeroSection = () => {
           Crafted with love,
           <br></br> 
           found at
-          <span className="text-5xl text-textPrimary"> Hillside's </span>
+          <span className="text-5xl text-textPrimary"> Hillside&apos;s </span>
           doorstep.
         </h3>
         <Button buttonText="Shop Now" onClick={() => {}} outline={3}/>
