@@ -50,7 +50,7 @@ model Order{
   deliveryStatus String?
   createDate DateTime @default(now())
   paymentIntentId String @unique
-  products CartProductType[]
+  products Json
   address Address?
 
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
