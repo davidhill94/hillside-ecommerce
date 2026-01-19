@@ -187,7 +187,7 @@ export const productData = [
         userId: "jdnjnvjr353",
         productId: "4jnc884n",
         rating: 2,
-        comment: "Great quality but the poster doesn't have the same feel as I saw on the website",
+        comment: "Great quality but the poster does not have the same feel as I saw on the website",
         createdAt: "2023-05-25T15:50:43.558Z",
         user: {
           id: "jdnjnvjr353",
