@@ -1,25 +1,30 @@
 // getCurrentUser.ts
-import { getServerSession } from "next-auth/next";
+import { getServerSession } from "next-auth";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/libs/prismadb";
 import { NextRequest } from "next/server";
 
-interface CurrentUser {
-  id: string;
-  name?: string | null;
-  email?: string | null;
-  emailVerified?: string | null;
-  image?: string | null;
-  role: "USER" | "ADMIN";
-  createdAt: string;
-  updatedAt: string;
-}
-
-// Optional `req` parameter allows this to work for pages or API routes
-export async function getCurrentUser(req?: NextRequest): Promise<CurrentUser | null> {
+export async function getCurrentUser(req?: NextRequest) {
   try {
-    // Pass req only if provided (needed for API routes)
-    const session = await getServerSession(authOptions);
+    let session;
+
+    // API Route (req provided)
+    if (req) {
+      const nodeReq = {
+        headers: Object.fromEntries(req.headers),
+      } as any;
+
+      const nodeRes = {
+        getHeader() {},
+        setHeader() {},
+      } as any;
+
+      session = await getServerSession(nodeReq, nodeRes, authOptions);
+    } 
+    // Server Component
+    else {
+      session = await getServerSession(authOptions);
+    }
 
     if (!session?.user?.email) return null;
 
@@ -35,8 +40,8 @@ export async function getCurrentUser(req?: NextRequest): Promise<CurrentUser | n
       updatedAt: user.updatedAt.toISOString(),
       emailVerified: user.emailVerified?.toISOString() || null,
     };
-  } catch (error) {
-    console.error("getCurrentUser error:", error);
+  } catch (err) {
+    console.error("getCurrentUser error:", err);
     return null;
   }
 }
