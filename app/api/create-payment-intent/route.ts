@@ -4,7 +4,6 @@ export const runtime = "nodejs";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import prisma from "@/libs/prismadb";
-import { getCurrentUser } from "@/actions/getCurrentUser";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2022-11-15",
@@ -19,6 +18,8 @@ const calculateOrderAmount = (items: any[]) => {
 export async function POST(req: NextRequest) {
   try {
     const data = await req.json();
+
+    const { getCurrentUser } = await import("@/actions/getCurrentUser");
     const currentUser = await getCurrentUser(req);
 
     if (!currentUser) {
