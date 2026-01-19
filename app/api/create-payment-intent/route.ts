@@ -2,7 +2,7 @@ export const dynamic = 'force-dynamic'; // Forces render on request & NOT BUILD
 
 import { CartProductType } from "@/app/product/[productId]/productDetails";
 import prisma from "@/libs/prismadb";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 
@@ -22,9 +22,9 @@ const calculateOrderAmount = (items: CartProductType[]) => {
   return price;
 };
 
-export async function POST(req, res) {
+export async function POST(req: NextRequest) {
   const data = await req.json();
-  const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser(req);
   const total = calculateOrderAmount(data.submitData) * 100;
 
   //IF NO USER IS LOGGED IN THEN RETURN ERROR
