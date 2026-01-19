@@ -3,7 +3,6 @@ export const fetchCache = "force-no-store";
 import type { Metadata } from "next";
 import { Lato } from "next/font/google";
 import "./globals.css";
-import { getCurrentUser } from "@/actions/getCurrentUser";
 import NavBar from "./components/nav/NavBar";
 import Footer from "./components/footer/Footer";
 import CartProvider from "@/providers/CartProvider";
@@ -21,7 +20,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-
+  
+  const { getCurrentUser } = await import("@/actions/getCurrentUser");
   const currentUser = await getCurrentUser();
 
   return (
