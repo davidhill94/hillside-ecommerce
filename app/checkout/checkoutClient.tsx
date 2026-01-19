@@ -29,14 +29,18 @@ const CheckoutClient: React.FC<CheckoutClientProps> = ({ currentUser }) => {
   const handleSubmit = async () => {
     setError(false);
     setRedirecting(false);
-    const submitData = cartProducts;
+    const submitData = (cartProducts ?? []).map((item) => ({
+      id: item.id,
+      price: item.price,
+      quantity: item.quantity,
+    }));
     const payment_intent_id = paymentIntent;
 
     if (!currentUser) {
       toast.error("Please Log in to continue with checkout");
       setLoading(false);
       setRedirecting(true);
-      router.push("/login")
+      router.push("/login");
     } else {
       try {
         const res = await fetch(`/api/create-payment-intent`, {
@@ -54,15 +58,15 @@ const CheckoutClient: React.FC<CheckoutClientProps> = ({ currentUser }) => {
         }
         //Checks to see paymentIntent is already in local storage, if not it sets local storage to paymentIntent Id
         const hillsidePaymentIntent: any = localStorage.getItem(
-          "hillsidePaymentIntent"
+          "hillsidePaymentIntent",
         );
         const parsedPaymentIntent: string | null = JSON.parse(
-          hillsidePaymentIntent
+          hillsidePaymentIntent,
         );
         if (!parsedPaymentIntent) {
           localStorage.setItem(
             "hillsidePaymentIntent",
-            JSON.stringify(data.paymentIntent.id)
+            JSON.stringify(data.paymentIntent.id),
           );
         } else {
           console.log("Payment Intent is already logged in LocalStorage");
@@ -82,7 +86,7 @@ const CheckoutClient: React.FC<CheckoutClientProps> = ({ currentUser }) => {
   }, []);
 
   const stripePromise = loadStripe(
-    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string,
   );
 
   const options: StripeElementsOptions = {

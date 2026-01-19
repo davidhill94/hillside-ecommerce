@@ -1,8 +1,6 @@
 export const dynamic = "force-dynamic";
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import CheckoutClient from "./checkoutClient";
-import { cookies, headers } from "next/headers";
-import { authOptions } from "@/pages/api/auth/[...nextauth]";
 
 const Checkout = async () => {
 
