@@ -3,7 +3,6 @@ import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import toast from "react-hot-toast";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2022-11-15",

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import MenuItem from "./MenuItem";
 import Backdrop from "../backdrop";

@@ -10,7 +10,6 @@ import CartItem from "./cartItem";
 import CartItemMobile from "./cartItemMobile";
 import Link from "next/link";
 import { CartProductType } from "../product/[productId]/productDetails";
-import { loadStripe } from "@stripe/stripe-js";
 
 const CartClient = () => {
   const { cartProducts, handleClearCart, cartTotalAmount } = useCart();

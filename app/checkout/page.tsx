@@ -1,6 +1,5 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
 import CheckoutClient from "./checkoutClient";
-import { SafeUser } from "@/types";
 
 const Checkout = async () => {
 

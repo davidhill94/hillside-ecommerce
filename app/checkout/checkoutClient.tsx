@@ -9,7 +9,6 @@ import { Button } from "../components/buttons/buttons";
 import { useCart } from "../hooks/useCart";
 import toast from "react-hot-toast";
 import { SafeUser } from "@/types";
-import { divider } from "@nextui-org/react";
 
 interface CheckoutClientProps {
   currentUser: SafeUser | null;

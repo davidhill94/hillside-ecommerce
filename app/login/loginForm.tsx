@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Input from "../components/inputs/input";
 import Heading from "../components/Headings";
-import { register } from "module";
 import { useForm, FieldValues, SubmitHandler } from "react-hook-form";
 import { Button } from "../components/buttons/buttons";
 import Link from "next/link";
