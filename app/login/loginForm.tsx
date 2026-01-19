@@ -103,7 +103,7 @@ if(currentUser){
         full
         />
         <p className="text-sm">
-            Don't have an account?
+            Don&apos;t have an account?
             <Link href="/register" className="underline ml-1">
             Register
             </Link>
