@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import Container from "../Container";
 import { FaSearch } from "react-icons/fa";

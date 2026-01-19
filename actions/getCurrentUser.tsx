@@ -1,37 +1,42 @@
+// getCurrentUser.ts
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import prisma from "@/libs/prismadb";
 import { NextRequest } from "next/server";
 
-//generaring session
-export async function getSession() {
-  return await getServerSession(authOptions);
+interface CurrentUser {
+  id: string;
+  name?: string | null;
+  email?: string | null;
+  emailVerified?: string | null;
+  image?: string | null;
+  role: "USER" | "ADMIN";
+  createdAt: string;
+  updatedAt: string;
 }
 
-export async function getCurrentUser(req: NextRequest) {
+// Optional `req` parameter allows this to work for pages or API routes
+export async function getCurrentUser(req?: NextRequest): Promise<CurrentUser | null> {
   try {
-    const session: any = await getServerSession(authOptions);
+    // Pass req only if provided (needed for API routes)
+    const session = await getServerSession(authOptions);
 
-    //checks to see if session has a user email logged in
-if(!session?.user.email){
-    return null
-}
-const currentUser = await prisma.user.findUnique({
-    where: {
-        email: session?.user?.email
-    }
-})
-if(!currentUser){
-    return null
-}
-return {
-    ...currentUser,
-    createdAt: currentUser.createdAt.toISOString(),
-    updatedAt: currentUser.updatedAt.toISOString(),
-    emailVerified: currentUser.emailVerified?.toISOString() || null
-}
+    if (!session?.user?.email) return null;
 
-  } catch (error: any) {
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    });
+
+    if (!user) return null;
+
+    return {
+      ...user,
+      createdAt: user.createdAt.toISOString(),
+      updatedAt: user.updatedAt.toISOString(),
+      emailVerified: user.emailVerified?.toISOString() || null,
+    };
+  } catch (error) {
+    console.error("getCurrentUser error:", error);
     return null;
   }
 }

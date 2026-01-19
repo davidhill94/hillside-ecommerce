@@ -25,6 +25,7 @@ const calculateOrderAmount = (items: CartProductType[]) => {
 export async function POST(req: NextRequest) {
   const data = await req.json();
   const currentUser = await getCurrentUser(req);
+  if (!currentUser) return NextResponse.error();
   const total = calculateOrderAmount(data.submitData) * 100;
 
   //IF NO USER IS LOGGED IN THEN RETURN ERROR

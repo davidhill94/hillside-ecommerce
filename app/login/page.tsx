@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getCurrentUser } from "../../actions/getCurrentUser";
 import FormWrap from "../components/FormWrap";
 import LoginForm from "./loginForm";
