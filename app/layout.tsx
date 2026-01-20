@@ -11,7 +11,7 @@ import { Toaster } from "react-hot-toast";
 const lato = Lato({ subsets: ["latin"], weight: ["400", "700", "900"] });
 
 export const metadata: Metadata = {
-  title: "Hillside Crafts",
+  title: "Hillside Prints",
   description: "Ecommerce application",
 };
 
