@@ -11,16 +11,11 @@ const config: Config = {
   theme: {
     colors: {
       transparent: "transparent",
-      primaryColor: "#E1E8E6",
-      secondaryColor: "#A3C3B8",
-      tertiary: "#B0C5CA",
-      textPrimary: "#333333",
-      light: {
-        primary: "#B0B0B0",
-        secondary: "#89A89D",
-        grey: "#F5F5F5",
-        cream: "#F1ECE9",
-      },
+      primaryColor: "#A3C3B8",
+      secondaryColor: "#E1E8E6",
+      tertiary: "#B7AFA6",
+      textPrimary: "#1A1A1A",
+      backgroundWhite: "#F7F5F2",
       black: "#000000",
       inStock: "#38761d",
       outOfStock: "#990000",

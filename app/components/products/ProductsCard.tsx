@@ -24,20 +24,20 @@ const productRatingAvg = data.reviews.reduce((tally: number, item: any) =>
         className="aspect-square overflow-hidden cursor-pointer relative w-full"
         onClick={() => router.push(`/product/${data.id}`)}
         >
-          <img src={data.images[0].image} alt={data.name} className="hover:scale-125 transition"></img>
+          <img src={data.images[0].image} alt={data.name} className="hover:scale-105 transition"></img>
         </div>
         <div className="w-full p-1 flex flex-col items-start justify-between">
           <h3
-          className="cursor-pointer hover:underline"
+          className="cursor-pointer hover:underline font-bold"
           onClick={() => router.push(`/product/${data.id}`)}
           >{truncateText(data.name)}</h3>
           <div  className="flex justify-start w-full">
-            <h4 className="flex items-center justify-start w-auto mr-2 text-secondaryColor">
+            <h4 className="flex items-center justify-start w-auto mr-2 text-textPrimary">
               {generateRating(
                 data.reviews.length > 0 ? productRatingAvg : 0
               )}
             </h4>
-            <h4 className="italic w-full">{formatReviews(data.reviews.length)}</h4>
+            <h4 className="italic w-full text-textPrimary">{formatReviews(data.reviews.length)}</h4>
           </div>
           <h4 className="font-semibold">{formatPrice(data.price)}</h4>
         </div>
