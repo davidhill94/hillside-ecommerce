@@ -6,7 +6,6 @@ import Link from "next/link";
 import Container from "../Container";
 import { FaSearch } from "react-icons/fa";
 import Image from "next/image";
-import HillsideLogo from "../../../public/images/hillside_logo.png"
 
 interface NavBarProps {
   currentUser: any;
@@ -27,9 +26,15 @@ const NavBar: React.FC<NavBarProps> = ({ currentUser }) => {
               />
             </Link>
             <div className="flex items-center gap-8 md:gap-12">
-              <div>Shop</div>
-              <div>About Us</div>
-              <div>Contact</div>
+              <Link
+              href="/"
+              >Shop</Link>
+              <Link
+              href="/about"
+              >About Us</Link>
+              <Link
+              href="/customise"
+              >Customise</Link>
               <div className="flex items-center gap-4 md:gap-6 text-2xl">
                 <div className="hidden md:block">
                   <FaSearch />

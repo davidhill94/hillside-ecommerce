@@ -30,13 +30,13 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <div className="absolute rounded shadow-dropdown w-[170px] bg-primaryColor overflow-hidden right-0 top-10 flex flex-col text-sm cursor-pointer transition">
             {currentUser ? (
               <div>
-                <Link href="/settings">
+                <Link href="/account-settings">
                   <MenuItem onClick={toggleOpen}>Account Settings</MenuItem>
                 </Link>
-                <Link href="/orders">
+                <Link href="/your-orders">
                   <MenuItem onClick={toggleOpen}>Your Orders</MenuItem>
                 </Link>
-                <Link href="/admin">
+                <Link href="/admin-dashboard">
                   <MenuItem onClick={toggleOpen}>Admin Dashboard</MenuItem>
                 </Link>
                 <hr className="my-0 text-light-secondary" />
