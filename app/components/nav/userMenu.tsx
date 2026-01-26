@@ -27,7 +27,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           <FaUserCircle />
         </div>
         {isOpen && (
-          <div className="absolute rounded shadow-dropdown w-[170px] bg-light-grey overflow-hidden right-0 top-10 flex flex-col text-sm cursor-pointer transition">
+          <div className="absolute rounded shadow-dropdown w-[170px] bg-primaryColor overflow-hidden right-0 top-10 flex flex-col text-sm cursor-pointer transition">
             {currentUser ? (
               <div>
                 <Link href="/settings">

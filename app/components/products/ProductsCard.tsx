@@ -21,7 +21,7 @@ const productRatingAvg = data.reviews.reduce((tally: number, item: any) =>
     <div className="col-span-1">
       <div className="flex flex-col items-center w-full gap-1">
         <div 
-        className="aspect-square overflow-hidden cursor-pointer relative w-full"
+        className="aspect-square overflow-hidden cursor-pointer relative w-full rounded-lg"
         onClick={() => router.push(`/product/${data.id}`)}
         >
           <img src={data.images[0].image} alt={data.name} className="hover:scale-105 transition"></img>

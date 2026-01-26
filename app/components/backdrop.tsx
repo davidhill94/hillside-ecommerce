@@ -8,7 +8,7 @@ const Backdrop: React.FC<BackdropProps> = ({ onClick }) => {
         onClick={onClick}
         className="
         opacity-50
-        bg-primaryColor
+        bg-textPrimary
         w-screen
         h-screen
         fixed

@@ -21,7 +21,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({
       <div className="w-[250px] h-auto sm:w-[300px] lg:w-[400px] aspect-square object-contain">
         <img 
         src={cartProduct.image.image} 
-        className="w-full h-full shadow-input"
+        className="w-full h-full shadow-input rounded-lg"
         alt={cartProduct.name}
         />
       </div>
@@ -31,7 +31,7 @@ const ProductImages: React.FC<ProductImagesProps> = ({
             <div
               key={image.id}
               onClick={() => handleImageSelect(image)}
-              className={`relative col-span-1 w-full h-full rounded border border-secondaryColor aspect-square ${
+              className={`relative col-span-1 w-full h-full rounded-lg border border-secondaryColor aspect-square ${
                 cartProduct.image.id === image.id ? "border-4" : "border-none"
               }`}
             >
